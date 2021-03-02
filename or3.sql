@@ -49,3 +49,44 @@ SELECT Tanar, MIN(hanyadik) as min, MAX(hanyadik) as max, AVG(hanyadik) as átla
 FROM kreta
 GROUP BY Tanar
 ;
+
+
+------- kerekítünk
+
+SELECT Tanar, MIN(hanyadik) as min, MAX(hanyadik) as max, Round(AVG(hanyadik),2) as átlag, Round(stdevp(hanyadik),2) as szórás 
+FROM kreta
+GROUP BY Tanar
+;
+
+
+------- sorba rendezünk
+
+SELECT Tanar, MIN(hanyadik) as min, MAX(hanyadik) as max, Round(AVG(hanyadik),2) as átlag, Round(stdevp(hanyadik),2) as szórás 
+FROM kreta
+GROUP BY Tanar
+ORDER BY AVG(hanyadik)
+;
+
+
+
+
+----------- csak a nagy szórásúakat szedjük ki!
+
+
+SELECT Tanar, MIN(hanyadik) as min, MAX(hanyadik) as max, Round(AVG(hanyadik),2) as átlag, Round(stdevp(hanyadik),2) as szórás 
+FROM kreta
+-- WHERE : csoportosítás előtti szűrés
+GROUP BY Tanar
+HAVING stdevp(hanyadik)>2
+ORDER BY AVG(hanyadik)
+;
+
+------ ebben legyen benne minden
+
+SELECT Tanar, MIN(hanyadik) as min, MAX(hanyadik) as max, Round(AVG(hanyadik),2) as átlag, Round(stdevp(hanyadik),2) as szórás 
+FROM kreta
+WHERE Tantargy ="mt" 
+GROUP BY Tanar
+HAVING stdevp(hanyadik)>2
+ORDER BY AVG(hanyadik)
+;
