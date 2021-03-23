@@ -1,1 +1,19 @@
+SELECT *
+FROM mu;
 
+SELECT *
+FROM mu
+WHERE ev=1916
+;
+
+SELECT *
+FROM mu
+WHERE ev=1916
+ORDER BY cim
+;
+
+SELECT cim
+FROM mu
+WHERE ev=1916
+ORDER BY cim
+;
