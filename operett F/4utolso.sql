@@ -1,1 +1,8 @@
+SELECT MAX(ev)
+FROM mu;
+
+
+SELECT DISTINCT TOP 1  ev
+FROM mu
+Order BY ev DESC;
 
